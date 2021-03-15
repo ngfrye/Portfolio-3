@@ -1,0 +1,18 @@
+---
+title: "Portfolio-3"
+author: "Natalie Frye"
+date: "3/15/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+I was interested in practicing the web scraping skills I learned in lab 7 some more, and I'm really into art and really liked doing that lab on a museum's colleciton, so I decided to try it on my own on my second favorite art museum (because my first favorite didn't allow scraping), the National Portrait Gallery in DC, where I'm from :)
+
+```{r load-packages}
+
+```
+
+I'm filtering my search to show all of the pieces currently on display at the museum. I'm interested in scraping information about the artist name, title of the piece (often the name of the person it's a portrait of), the medium, where the piece is located, and the date.
