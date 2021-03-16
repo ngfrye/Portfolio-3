@@ -29,23 +29,6 @@ tibble(npg_art)
 
 It looks like everything came out right from my web scraping! I now have a dataframe with 5 variables, all of which are currently character variables, and  including 465 portraits. 
 
-The dates are characters because they're typed in a bunch of different ways, with some ranges, some "circa"'s, etc. Many of them are in normal year fomat, though, so I'd like to try to coerce the column into being numeric so I can see the distribution of those years. 
-
-#```{r dates-numeric}
-date <- as.numeric()
-
-tibble(npg_art)
-```
-
-#```{r plot-dates}
-ggplot(data = npg_art, 
-      mapping = aes(x = date)) +
-    geom_histogram(binwidth = 5) +
-  labs(title = "Year Distribution of Art Pieces", 
-       x = "Year",
-       y = "Number of pieces") 
-```
-
 I'm interested in the frequencies of the different mediums. 
 
 ```{r frequencies-medium}

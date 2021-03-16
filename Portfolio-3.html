@@ -224,17 +224,6 @@ summary {
 ## 10 Chuck Close Self-Port~ Chuck Close         Photogr~ National Portr~ 1989     
 ## # ... with 455 more rows</code></pre>
 <p>It looks like everything came out right from my web scraping! I now have a dataframe with 5 variables, all of which are currently character variables, and including 465 portraits.</p>
-<p>The dates are characters because they’re typed in a bunch of different ways, with some ranges, some “circa”’s, etc. Many of them are in normal year fomat, though, so I’d like to try to coerce the column into being numeric so I can see the distribution of those years.</p>
-<p>#```{r dates-numeric} date &lt;- as.numeric()</p>
-<p>tibble(npg_art)</p>
-<pre><code>
-#```{r plot-dates}
-ggplot(data = npg_art, 
-      mapping = aes(x = date)) +
-    geom_histogram(binwidth = 5) +
-  labs(title = &quot;Year Distribution of Art Pieces&quot;, 
-       x = &quot;Year&quot;,
-       y = &quot;Number of pieces&quot;) </code></pre>
 <p>I’m interested in the frequencies of the different mediums.</p>
 <pre class="r"><code>npg_art %&gt;%
   count(medium, sort = TRUE)</code></pre>
