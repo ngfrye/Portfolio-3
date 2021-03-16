@@ -9,22 +9,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+I was interested in practicing the web scraping skills I learned in lab 7 some more, and I'm really into art and really liked doing that lab on a museum's colleciton, so I decided to try it on my own on my second favorite art museum (because my first favorite didn't allow scraping), the National Portrait Gallery in DC, where I'm from :)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r load-packages}
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+I'm filtering my search to show all of the pieces currently on display at the museum. I'm interested in scraping information about the artist name, title of the piece (often the name of the person it's a portrait of), the medium, where the piece is located, and the date.
