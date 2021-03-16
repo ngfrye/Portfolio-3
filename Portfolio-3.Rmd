@@ -9,10 +9,62 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-I was interested in practicing the web scraping skills I learned in lab 7 some more, and I'm really into art and really liked doing that lab on a museum's colleciton, so I decided to try it on my own on my second favorite art museum (because my first favorite didn't allow scraping), the National Portrait Gallery in DC, where I'm from :)
+I was interested in practicing the web scraping skills I learned in lab 7 some more, and I'm really into art and really liked doing that lab on a museum's collection, so I decided to try it on my own on my second favorite art museum (because my first favorite didn't allow scraping), the National Portrait Gallery in DC, where I'm from :)
 
-```{r load-packages}
-
-```
 
 I'm filtering my search to show all of the pieces currently on display at the museum. I'm interested in scraping information about the artist name, title of the piece (often the name of the person it's a portrait of), the medium, where the piece is located, and the date.
+
+```{r load-packages}
+library(tidyverse) 
+library(skimr)
+```
+
+```{r load-data, message = FALSE}
+npg_art <- read_csv("data/npg-art.csv")
+```
+
+```{r see-dataframe}
+tibble(npg_art)
+```
+
+It looks like everything came out right from my web scraping! I now have a dataframe with 5 variables, all of which are currently character variables, and  including 465 portraits. 
+
+The dates are characters because they're typed in a bunch of different ways, with some ranges, some "circa"'s, etc. Many of them are in normal year fomat, though, so I'd like to try to coerce the column into being numeric so I can see the distribution of those years. 
+
+#```{r dates-numeric}
+date <- as.numeric()
+
+tibble(npg_art)
+```
+
+#```{r plot-dates}
+ggplot(data = npg_art, 
+      mapping = aes(x = date)) +
+    geom_histogram(binwidth = 5) +
+  labs(title = "Year Distribution of Art Pieces", 
+       x = "Year",
+       y = "Number of pieces") 
+```
+
+I'm interested in the frequencies of the different mediums. 
+
+```{r frequencies-medium}
+npg_art %>%
+  count(medium, sort = TRUE)
+```
+
+It turns out the most common medium is photographic negatives, which is actually really interesting! I don't usually see negatives displayed at this museum so that's surprising. The next most common are photographs and prints. 
+
+```{r frequencies-artists}
+npg_art %>%
+  count(artist, sort = TRUE)
+```
+
+I was curious about the most common artist, and the top most common artist is Mathew Brady Studio, and the third is Mathew Brady, so I'm assuming they're both by the same guy. I looked him up and he was a photographer in the late 1800s. He's considered the father of photojournalism and is well known for his documentation of the civil war. The Portrait Gallery has a big section on the civil war, so that makes sense. Cool!
+
+```{r frequencies-location}
+npg_art %>%
+  count(location, sort = TRUE)
+```
+
+I was curious if there are any pieces listed that are not housed at the National Portrait Gallery, since that was something they specified for each of the pieces and there are some sort of sister institutions that might also be indexed on their website, but it turns out that no, all 465 are at the Portrait Gallery. 
